@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA Database</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div>
+        <h1>QA Database</h1>
+        <div class="sub">Build category columns, stage one or more selections, and save them to your Excel database.</div>
+      </div>
+    </header>
+
+    <!-- Top fields -->
+    <section class="card form">
+      <div class="field">
+        <label for="serviceTag">Service Tag</label>
+        <input id="serviceTag" type="text" placeholder="e.g. SVC-10421" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label for="editorEmail">Editor Email</label>
+        <input id="editorEmail" type="email" placeholder="name@example.com" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label for="editTime">Total Edit Time (minutes)</label>
+        <input id="editTime" type="number" min="0" step="1" placeholder="e.g. 45" />
+      </div>
+    </section>
+
+    <!-- Miller columns -->
+    <section class="card miller-wrap">
+      <div class="miller-head">
+        <h2>Categories</h2>
+        <div class="path" id="pathDisplay">No selection yet</div>
+      </div>
+      <div class="columns" id="columns"></div>
+      <div class="miller-foot">
+        <span class="hint inline">Click an item to drill in. Hover to rename (&#9998;) or delete (&times;). Add items with the box under each column.</span>
+        <span class="spacer"></span>
+        <button class="btn" id="addSelectionBtn">+ Add selection</button>
+      </div>
+    </section>
+
+    <!-- Staged selections -->
+    <section class="card staged">
+      <div class="staged-head">
+        <h2>Staged selections <span class="count" id="stagedCount">(0)</span></h2>
+        <button class="btn small" id="clearStagedBtn" disabled>Clear all</button>
+      </div>
+      <ul class="staged-list" id="stagedList">
+        <li class="staged-empty">No selections staged yet. Build a path above and click <b>+ Add selection</b>.</li>
+      </ul>
+    </section>
+
+    <!-- Actions -->
+    <section class="card actions">
+      <button class="btn" id="chooseFileBtn">Connect database file&hellip;</button>
+      <span class="dbline" id="dbStatus">No database file connected.</span>
+      <span class="spacer"></span>
+      <button class="btn primary" id="saveBtn">Save selections</button>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
